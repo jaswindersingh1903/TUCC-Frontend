@@ -21,7 +21,7 @@ const routes: Routes = [
     component: ViewComponent,
   },
   {
-    path: '*/',
+    path: '**',
     component: ViewComponent,
   },
 ];
