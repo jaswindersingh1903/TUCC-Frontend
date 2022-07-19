@@ -26,13 +26,13 @@ export class HeaderComponent implements OnInit {
         },
         {
           label: 'Catalog',
-          icon: 'pi pi-fw pi-video',
+          icon: 'pi pi-fw pi-book',
           routerLink: 'catalog'
         },
         {
-            label: 'Partners',
-            icon: 'pi pi-fw pi-book',
-            routerLink: 'partners'
+            label: 'Products',
+            icon: 'pi pi-fw pi-video',
+            routerLink: 'products'
             
         },
         {
