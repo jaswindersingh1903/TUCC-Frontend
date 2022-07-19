@@ -1,0 +1,17 @@
+    <!-- <footer>
+        <div class="container">
+        <p-menubar [model]="items" po>
+            <ng-template pTemplate="start">
+                <img src="assets/images/cmwr-logo-450.jpg" height="40" class="mr-2">
+            </ng-template>
+        </p-menubar>
+        </div>
+    </footer> -->
+
+    <div class="dock-window">
+        <p-dock [model]="dockBasicItems" position="bottom">
+            <ng-template pTemplate="item" let-item>
+                <img [src]="item.icon" [alt]="item.label" width="100%">
+            </ng-template>
+        </p-dock>
+    </div>
