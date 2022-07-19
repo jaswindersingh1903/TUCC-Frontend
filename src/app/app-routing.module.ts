@@ -15,16 +15,12 @@ const routes: Routes = [
     loadChildren: () => import('./catalog/catalog.module').then(m => m.CatalogModule)
   },
   {
-    path: 'partners',
-    loadChildren: () => import('./partners/partners.module').then(m => m.PartnersModule)
+    path: 'products',
+    loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
   },
   {
     path: 'cart',
     loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule)
-  },
-  {
-    path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
     path: 'auth',
