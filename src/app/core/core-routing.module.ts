@@ -15,7 +15,10 @@ const routes: Routes = [
     path: '',
     component: AboutComponent,
   },
-  
+  {
+    path: '**',
+    component: HomeComponent,
+  },
 ];
 
 @NgModule({
