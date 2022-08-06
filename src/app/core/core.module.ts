@@ -9,25 +9,34 @@ import {MenubarModule} from 'primeng/menubar';
 import {DockModule} from 'primeng/dock';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import {ButtonModule} from 'primeng/button';
+import {BadgeModule} from 'primeng/badge';
+
+import {CartService } from '../shop/services/cart.service';
 
 @NgModule({
   declarations: [
     FooterComponent,
     HeaderComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,
     CoreRoutingModule,
     MenubarModule,
-    DockModule
-    
+    ButtonModule,
+    BadgeModule
   ],
   exports:[
     HeaderComponent,
     FooterComponent
   
+  ],
+  providers:[
+    CartService
   ]
 })
 export class CoreModule { }

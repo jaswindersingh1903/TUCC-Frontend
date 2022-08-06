@@ -1,8 +1,11 @@
-<p-menubar [model]="items" po>
-    <ng-template pTemplate="start">
-        <img src="assets/images/cmwr-logo-450.jpg" height="40" class="mr-2">
-    </ng-template>
-    <!-- <ng-template pTemplate="end">
-        <input type="text" pInputText placeholder="Search">
-    </ng-template> -->
-</p-menubar>
+<header>
+    <p-menubar [model]="items" po>
+        <ng-template pTemplate="start">
+            <img src="assets/images/cmwr-logo-450.jpg" height="40" class="mr-2">
+        </ng-template>
+        <ng-template pTemplate="end">
+            <!-- <p-button [routerLink]="'shop/cart'" label="Cart"  icon="pi pi-shopping-cart" badge={{totalCartItems}} styleClass="mr-2" >{{totalCartItems}}</p-button> -->
+            <p-button [routerLink]="'shop/cart'" label="Cart"  icon="pi pi-shopping-cart" styleClass="mr-2" ></p-button>
+        </ng-template>
+    </p-menubar>
+</header>
