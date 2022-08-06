@@ -1,0 +1,45 @@
+<!-- <p-card header="You Are Here: Help!" subheader=''
+[style]="{width: '360px'}" styleClass="p-card-shadow">
+    <ng-template pTemplate="header">
+        <img alt="Card" src="../../../assets/images/EDGE1030Coursethumbnail.png">
+    </ng-template>
+    <p>This course, the first in EDGE's Signpost Series, is designed to help communities of faith in crisis mode take the first steps on a change journey. Participants will learn to assess and contextualize their current situation and to build a leadership team to address issues. You'll see that a way back to hope is possible!</p>
+    <ng-template pTemplate="footer">
+            
+        <p-button label="Buy Now" icon="pi pi-money-bill" styleClass="p-button-success" (onClick)="addTocart()"></p-button>
+        <p-button label="View Details" icon="pi pi-ellipsis-h"  [style]="{'margin-left': '.7em'}"></p-button>
+    <p-confirmDialog header="Pay Now" icon="pi pi-money-bill"></p-confirmDialog>
+    <p-toast position="top-right"></p-toast>
+
+    </ng-template>
+
+</p-card> -->
+
+
+<div class="container">
+    <div class="row">
+        <!-- <p-card> -->
+            <ng-container *ngFor="let product of productsList">
+                <div class="card col-md-3">
+                    <!-- <img src="{{item.image}}" alt=""> -->
+                    <img src="../../../assets/images/EDGE1030Coursethumbnail.png" alt="">
+                    <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{product.product_name}}</h5>
+                    <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{product.product_name}}</p>
+                    <p>
+                        <strong>Price:</strong> ${{product.price}}
+                    </p>
+                        
+                       <!--  <p-button label="Buy Now" icon="pi pi-money-bill" styleClass="p-button-success" (click)=addtocart(product)></p-button>
+                        <p-button label="Buy Now" icon="pi pi-money-bill"  (click)=buyNow(product) [style]="{'margin-left': '.7em'}"></p-button> -->
+                        
+                        <!-- <p-splitButton label="Add to Cart"  (onClick)="addtocart(product)" [model]="items"></p-splitButton> -->
+                   
+
+                    <button class="btn btn-primary" (click)=addtocart(product)>Add to cart</button>
+                </div>
+            </ng-container>
+        <!-- </p-card> -->
+    </div>
+</div>
+<p-confirmDialog header="Pay Now" icon="pi pi-money-bill"></p-confirmDialog>
+    <p-toast position="top-right"></p-toast>
