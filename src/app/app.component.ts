@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SidebarComponent } from './core/components/sidebar/sidebar.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

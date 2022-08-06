@@ -6,11 +6,7 @@ const routes: Routes = [
     path: 'core',
     loadChildren: () => import('./core/core.module').then(m => m.CoreModule)
   },
-  {
-    path: 'core',
-    loadChildren: () => import('./core/core.module').then(m => m.CoreModule)
-  },
-  {
+    {
     path: 'catalog',
     loadChildren: () => import('./catalog/catalog.module').then(m => m.CatalogModule)
   },
@@ -19,7 +15,8 @@ const routes: Routes = [
     loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
   },
   {
-    path: 'cart',
+    // path: 'cart',
+    path: 'shop',
     loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule)
   },
   {
@@ -28,7 +25,11 @@ const routes: Routes = [
   },
   {
     path: '',
-    loadChildren: () => import('./catalog/catalog.module').then(m => m.CatalogModule)
+    loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule)
+
+    // loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
+
+    // loadChildren: () => import('./catalog/catalog.module').then(m => m.CatalogModule)
   },
 ];
 
