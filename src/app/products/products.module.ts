@@ -5,17 +5,23 @@ import { ProductsRoutingModule } from './products-routing.module';
 import { AddComponent } from './components/add/add.component';
 import { ViewComponent } from './components/view/view.component';
 import { EditComponent } from './components/edit/edit.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { ProductService } from './services/product.service';
 
 @NgModule({
   declarations: [
     AddComponent,
     ViewComponent,
-    EditComponent
+    EditComponent,
+
   ],
   imports: [
     CommonModule,
-    ProductsRoutingModule
+    ProductsRoutingModule,
+    HttpClientModule
+  ],
+  providers:[
+    ProductService
   ]
 })
 export class ProductsModule { }

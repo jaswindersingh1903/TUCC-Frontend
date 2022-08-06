@@ -20,10 +20,6 @@ const routes: Routes = [
     path: '',
     component: ViewComponent,
   },
-  {
-    path: '**',
-    component: ViewComponent,
-  },
 
 ];
 

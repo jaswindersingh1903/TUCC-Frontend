@@ -1,1 +1,29 @@
-<p>view works!</p>
+<section>
+
+  <div class="d-flex justify-content-between">
+    <h4>List Products</h4>
+    <a routerLink="/add" class="btn btn-success">Create New Product</a>
+  </div>
+
+  <br>
+  
+  <table class="table ">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th width="220px">Action</th>
+    </tr>
+    <tr *ngFor="let product of productsList">
+      <td>{{ product.id }}</td>
+      <td>{{ product.product_name }}</td>
+      <td>{{ product.price }}</td>
+      <td>
+        <a href="#" [routerLink]="['/product/', 'edit', product.id  ]" class="btn btn-primary">Edit</a>
+        <button type="button" (click)="deleteProducts(product.id)" class="btn btn-danger">Delete</button>
+
+      </td>
+    </tr>
+  </table>
+</section>
