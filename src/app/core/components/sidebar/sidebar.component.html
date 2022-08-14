@@ -1,1 +1,20 @@
-<p>sidebar works!</p>
+<header>
+    <div class="main-header d-flex justify-content-between p-3 align-items-center border-bottom">
+      <div>
+        <p-sidebar [(visible)]="display">
+          <div *ngFor='let item of items'>
+            <div class="sidebar-item">
+              <i class={{item.icon}}></i>&nbsp;{{ item.label }}
+            </div>
+          </div>
+        </p-sidebar>
+        <i (click)="display = true" class="pi pi-bars" style="font-size: 1.5em"></i>
+      </div>
+      <div>
+          <img src="assets/images/cmwr-logo-450.jpg" height="40" class="mr-2">
+      </div>
+      <div>
+        <i [routerLink]="'shop/cart'" label="Cart"  class="pi pi-shopping-cart" style="font-size: 1.5em"></i>
+      </div>
+    </div>
+  </header>
