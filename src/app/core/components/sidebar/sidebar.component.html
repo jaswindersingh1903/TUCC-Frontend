@@ -1,10 +1,10 @@
 <header>
     <div class="main-header d-flex justify-content-between p-3 align-items-center border-bottom">
       <div>
-        <p-sidebar [(visible)]="display">
+        <p-sidebar [(visible)]="display" [baseZIndex]="10000"  [style]="{width:'15em'}" >
           <div *ngFor='let item of items'>
-            <div class="sidebar-item">
-              <i class={{item.icon}}></i>&nbsp;{{ item.label }}
+            <div (click)="display = false" class="sidebar-item" [routerLink]="[ item.routerLink ]" >
+              <i  class={{item.icon}} ></i>&nbsp;{{ item.label }}
             </div>
           </div>
         </p-sidebar>
