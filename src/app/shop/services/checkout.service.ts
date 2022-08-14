@@ -12,7 +12,7 @@ export class CheckoutService
 
   makePayment(stripeToken: any): Observable<any>
   {
-    const url = "http://localhost:5000/checkout/"
+    // const url = "http://localhost:5000/checkout/"
  
     return this.http.post<any>(environment.apiBaseUrl+'/stripe',{token:stripeToken})
   }
