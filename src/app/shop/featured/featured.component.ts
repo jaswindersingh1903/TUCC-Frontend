@@ -21,11 +21,7 @@ export class FeaturedComponent implements OnInit {
   productsList: Product[]=[];
 
   //
-  paymentHandler: any = null;
  
-  success: boolean = false
-  
-  failure:boolean = false
   constructor(
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
@@ -38,7 +34,7 @@ export class FeaturedComponent implements OnInit {
   {
     this.getFeaturedProducts();
     this.invokeButton();
-    this.invokeStripe();
+    
   }
 
   public invokeButton()
@@ -47,7 +43,7 @@ export class FeaturedComponent implements OnInit {
       {label: 'Buy Now', icon: 'pi pi-money-bill', command: (product) => 
       {
         //  console.log(this.product);
-       this.buyNow(product)
+      //  this.buyNow(product)
       }},
       {separator:true},
 
@@ -72,78 +68,6 @@ export class FeaturedComponent implements OnInit {
       });
       console.log(this.productsList);
     })
-  }
-
-  public buyNow(Product)//to be implemented
-  {
-    let message = "Buy <strong> "+Product.product_name+"</strong> for "+Product.price+" <strong></strong> Now?"
-    this.confirmationService.confirm({
-      message:message,
-      accept: () => 
-      {
-        this.messageService.add({severity:'success', summary:'Please Wait', detail:'Taking you to Payment Page.'});
-        console.log(Product);
-        this.paynow(100);
-      }
-    });
-  }
-  
-  invokeStripe() 
-  {
-    if (!window.document.getElementById('stripe-script')) 
-    {
-      const script = window.document.createElement('script');
-      script.id = 'stripe-script';
-      script.type = 'text/javascript';
-      script.src = 'https://checkout.stripe.com/checkout.js';
-      script.onload = () => 
-      {
-        this.paymentHandler = (<any>window).StripeCheckout.configure({
-          key:'pk_test_51LTC43BkXJmv3iKTsJrPPG3TEblHodI2HZLP2TmoNf5YsSHqob5zkgODjMsTb279z0gFiLVsaL5DWMTDooKkBT5L00PuE7lzm8',
-          locale: 'auto',
-          token: function (stripeToken: any) 
-          {
-            console.log(stripeToken);
-          },
-        });
-      };
-
-      window.document.body.appendChild(script);
-    }
-  }
-  
-  public paynow(amount: number) 
-  {
-    this.messageService.add({severity:'warn', summary:'Processing Payment', detail:'Please wait,Taking you to payment page.',sticky:true});
-    const paymentHandler = (<any>window).StripeCheckout.configure({
-      key:'pk_test_51LTC43BkXJmv3iKTsJrPPG3TEblHodI2HZLP2TmoNf5YsSHqob5zkgODjMsTb279z0gFiLVsaL5DWMTDooKkBT5L00PuE7lzm8',
-      locale: 'auto',
-      token: function (stripeToken: any) {
-        console.log(stripeToken);
-        paymentstripe(stripeToken);
-      },
-    });
-
-    const paymentstripe = (stripeToken: any) => 
-    {
-      this.checkout.makePayment(stripeToken).subscribe((data: any) => {
-        console.log(data);
-        if (data.data === "success") 
-        {
-          this.success = true
-        }
-        else 
-        {
-          this.failure = true
-        }
-      });
-    };
-
-    paymentHandler.open({
-      name: 'Coding Shiksha',
-      description: 'This is a sample pdf file',
-      amount: amount * 100,
-    });
   }
 
   
