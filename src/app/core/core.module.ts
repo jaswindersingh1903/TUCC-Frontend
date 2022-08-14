@@ -12,6 +12,7 @@ import { AboutComponent } from './components/about/about.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import {ButtonModule} from 'primeng/button';
 import {BadgeModule} from 'primeng/badge';
+import {SidebarModule} from 'primeng/sidebar';
 
 import {CartService } from '../shop/services/cart.service';
 
@@ -28,12 +29,13 @@ import {CartService } from '../shop/services/cart.service';
     CoreRoutingModule,
     MenubarModule,
     ButtonModule,
-    BadgeModule
+    BadgeModule,
+    SidebarModule
   ],
   exports:[
     HeaderComponent,
-    FooterComponent
-  
+    FooterComponent,
+    SidebarComponent
   ],
   providers:[
     CartService
