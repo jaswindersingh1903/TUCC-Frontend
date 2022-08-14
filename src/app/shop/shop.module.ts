@@ -12,13 +12,13 @@ import {SplitButtonModule} from 'primeng/splitbutton';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ToastModule} from 'primeng/toast';
 import {BadgeModule} from 'primeng/badge';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 //local service
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import { CheckoutService } from './services/checkout.service';
 import { CartService } from './services/cart.service';
-
 //local components
 import { CheckoutComponent } from './checkout/checkout.component';
 
@@ -37,7 +37,9 @@ import { CheckoutComponent } from './checkout/checkout.component';
     SplitButtonModule,
     ConfirmDialogModule,
     ToastModule,
-    BadgeModule
+    BadgeModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: 
   [
