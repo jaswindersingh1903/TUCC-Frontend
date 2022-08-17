@@ -1,0 +1,13 @@
+.mat-stepper-vertical {
+    margin-top: 8px;
+  }
+  
+  .mat-form-field {
+    margin-top: 16px;
+  }
+  .mat-form-field{
+    /* padding-bottom: 1.25em; */
+    margin: 10px 10px 10px 6px;
+    /* font-size: 45px; */
+    /* background-color: #673ab7; */
+}  

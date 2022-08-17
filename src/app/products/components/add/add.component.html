@@ -1,1 +1,368 @@
-<p>add compopnent works!</p>
+<ng-container>
+    <!-- <div class="container">
+        <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+            {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+        </button>
+        <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+                <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>Fill out your name</ng-template>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Name</mat-label>
+                        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperNext>Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="secondFormGroup">
+                <form [formGroup]="secondFormGroup">
+                    <ng-template matStepLabel>Fill out your address</ng-template>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Address</mat-label>
+                        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button matStepperNext>Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Done</ng-template>
+                <p>You are now done.</p>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button (click)="stepper.reset()">Reset</button>
+                </div>
+            </mat-step>
+        </mat-stepper>
+    </div> -->
+
+    <!-- <h3>Linear Vertical Stepper Demo using a single form</h3> -->
+    <form [formGroup]="formGroup">
+        <mat-stepper orientation="horizontal" #linearVerticalStepper="matVerticalStepper" formArrayName="formArray"
+            [linear]="false">
+            <!-- STEP 1 -->
+            <mat-step formGroupName="0" [stepControl]="formArray?.get([0])">
+                <ng-template matStepLabel>Prodcut Meta</ng-template>
+
+                <mat-form-field>
+                    <mat-label>Product Name</mat-label>
+                    <input matInput formControlName="productNameFormCtrl" required>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label> Product Sub-Title</mat-label>
+                    <input matInput formControlName="productSubTitleFormCtrl" required>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Product Code</mat-label>
+                    <input matInput formControlName="productSubTitleFormCtrl" required>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Date Edited</mat-label>
+                    <input type="date" matInput formControlName="productSubTitleFormCtrl" required>
+                    <mat-error>This field is required</mat-error>
+
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Active Item?</mat-label>
+                    <mat-select formControlName="productSubTitleFormCtrl">
+                        <mat-option [value]="1">
+                            Yes
+                        </mat-option>
+                        <mat-option [value]="0">
+                            No
+                        </mat-option>
+                    </mat-select>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Out of Stock?</mat-label>
+                    <mat-select formControlName="productSubTitleFormCtrl" required>
+                        <mat-option [value]="1">
+                            Yes
+                        </mat-option>
+                        <mat-option [value]="0">
+                            No
+                        </mat-option>
+                    </mat-select>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+
+                <div>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </mat-step>
+
+            <!-- STEP 2 -->
+            <mat-step formGroupName="1" [stepControl]="formArray?.get([1])">
+                <!-- <ng-template matStepLabel>Add A Product step 1</ng-template> -->
+
+                <mat-form-field>
+                    <mat-label>Show in Catalog / Product Listings</mat-label>
+                    <mat-select formControlName="showInCatalogFormCtrl">
+                        <mat-option [value]="1">
+                            Yes
+                        </mat-option>
+                        <mat-option [value]="0">
+                            No
+                        </mat-option>
+                    </mat-select>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label> Featured</mat-label>
+                    <mat-select formControlName="showInCatalogFormCtrl">
+                        <mat-option [value]="1">
+                            Yes
+                        </mat-option>
+                        <mat-option [value]="0">
+                            No
+                        </mat-option>
+                    </mat-select>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Description</mat-label>
+                    <textarea matInput formControlName="productSubTitleFormCtrl"></textarea>
+                    <!-- <input type="text" matInput formControlName="productSubTitleFormCtrl" required> -->
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Description 2</mat-label>
+                    <textarea matInput formControlName="productSubTitleFormCtrl"
+                        placeholder="An optional extra description field, it will be combined with first description as standard or can be output separately if the product details page is customised to do so."></textarea>
+                    <!-- <input type="text" matInput formControlName="productSubTitleFormCtrl" required> -->
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Short Description</mat-label>
+                    <textarea matInput formControlName="productSubTitleFormCtrl"
+                        placeholder="A plain text field that is used for the description in catalog listings."></textarea>
+                    <!-- <input type="text" matInput formControlName="productSubTitleFormCtrl" required> -->
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Keywords</mat-label>
+                    <textarea
+                        placeholder="Used for product search in the store and output in the Meta Keywords HTML element."
+                        matInput formControlName="productSubTitleFormCtrl"></textarea>
+                    <!-- <input type="text" matInput formControlName="productSubTitleFormCtrl" required> -->
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </mat-step>
+
+            <!-- STEP 3 -->
+            <mat-step formGroupName="2" [stepControl]="formArray?.get([2])">
+                <mat-form-field>
+                    <mat-label>Meta Title</mat-label>
+                    <input type="text" matInput formControlName="productNameFormCtrl" required>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Meta Description</mat-label>
+                    <input type="text" matInput formControlName="productNameFormCtrl" required>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Allow Invoice?</mat-label>
+                    <mat-select formControlName="productSubTitleFormCtrl">
+                        <mat-option [value]="1">
+                            Yes
+                        </mat-option>
+                        <mat-option [value]="0">
+                            No
+                        </mat-option>
+                    </mat-select>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+
+                <div>
+                    <mat-label>Thumbnail URL</mat-label>
+                    <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)" accept="image/*">
+                        <ng-template pTemplate="content">
+                            <ul *ngIf="uploadedFiles.length">
+                                <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                            </ul>
+                        </ng-template>
+                    </p-fileUpload>
+                </div>
+
+
+                <div>
+                    <mat-label>Heading Image URL</mat-label>
+                    <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)" accept="image/*">
+                        <ng-template pTemplate="content">
+                            <ul *ngIf="uploadedFiles.length">
+                                <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                            </ul>
+                        </ng-template>
+                    </p-fileUpload>
+                </div>
+
+
+                <div>
+                    <mat-label>Large Image URL</mat-label>
+                    <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)" accept="image/*">
+                        <ng-template pTemplate="content">
+                            <ul *ngIf="uploadedFiles.length">
+                                <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                            </ul>
+                        </ng-template>
+                    </p-fileUpload>
+                </div>
+
+
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </mat-step>
+
+            <!-- STEP 4 -->
+            <mat-step formGroupName="3" [stepControl]="formArray?.get([3])">        
+                <!-- <ng-template matStepLabel>
+                    <div>Fill out your email address</div>
+                </ng-template> -->
+                <mat-form-field>
+                    <mat-label>Inventory</mat-label>
+                    <input type="number" matInput formControlName="productNameFormCtrl" required>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Visibility Start Date/Time</mat-label>
+                    <input type="datetime-local" matInput formControlName="productSubTitleFormCtrl" required>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Visibility End Date/Time</mat-label>
+                    <input type="date" matInput formControlName="productSubTitleFormCtrl" required>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Purchasable Start Date/Time</mat-label>
+                    <input type="date" matInput formControlName="productSubTitleFormCtrl" required>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Purchasable End Date/Time</mat-label>
+                    <input type="date" matInput formControlName="productSubTitleFormCtrl" required>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Price</mat-label>
+                    <input type="number" matInput formControlName="productNameFormCtrl" required>
+                    <mat-error>This field is required</mat-error>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </mat-step>
+
+            <!-- STEP 5 -->
+            <mat-step formGroupName="4" [stepControl]="formArray?.get([4])">
+                <!-- <ng-template matStepLabel>
+                    <div>Fill out your email address</div>
+                </ng-template> -->
+                <mat-form-field>
+                    <mat-label>Product Finance Code</mat-label>
+                    <input matInput formControlName="productNameFormCtrl" required>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Product Owner Emails</mat-label>
+                    <input matInput formControlName="productSubTitleFormCtrl" required>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Related Products</mat-label>
+
+                    <mat-select formControlName="productSubTitleFormCtrl" multiple>
+                        <mat-option *ngFor="let relatedProduct of relatedProducts" [value]="relatedProduct">{{relatedProduct}}</mat-option>
+                      </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Categories </mat-label>
+                    <mat-select formControlName="productSubTitleFormCtrl" multiple>
+                        <mat-option *ngFor="let relatedProduct of relatedProducts" [value]="relatedProduct">{{relatedProduct}}</mat-option>
+                      </mat-select>
+                    <mat-error>This field is required</mat-error>
+
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Active Item?</mat-label>
+                    <mat-select formControlName="productSubTitleFormCtrl">
+                        <mat-option [value]="1">
+                            Yes
+                        </mat-option>
+                        <mat-option [value]="0">
+                            No
+                        </mat-option>
+                    </mat-select>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Out of Stock?</mat-label>
+                    <mat-select formControlName="productSubTitleFormCtrl" required>
+                        <mat-option [value]="1">
+                            Yes
+                        </mat-option>
+                        <mat-option [value]="0">
+                            No
+                        </mat-option>
+                    </mat-select>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </mat-step>
+
+            <!-- <mat-step>
+                <ng-template matStepLabel>Confirm your information</ng-template>
+                Everything seems correct.
+                <div>
+                    <button mat-button>Done</button>
+                    <button type="button" mat-button (click)="linearVerticalStepper.reset()">Reset</button>
+                </div>
+            </mat-step> -->
+        </mat-stepper>
+    </form>
+
+
+</ng-container>

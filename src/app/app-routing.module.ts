@@ -25,9 +25,9 @@ const routes: Routes = [
   },
   {
     path: '',
-    loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule)
+    // loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule)
 
-    // loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
+    loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
 
     // loadChildren: () => import('./catalog/catalog.module').then(m => m.CatalogModule)
   },
