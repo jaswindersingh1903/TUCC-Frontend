@@ -16,7 +16,7 @@
 </p-card> -->
 
 
-<div class="container">
+<div class="container" *ngIf="0">
     <div class="row">
         <!-- <p-card> -->
             <ng-container *ngFor="let product of productsList">
@@ -41,5 +41,30 @@
         <!-- </p-card> -->
     </div>
 </div>
+
+<div class="featured_shop_wrap mb-5">
+    <div class="heading_wrap text-center mb-5">
+      <h3>Popular Courses</h3>
+    </div>
+    <div class="allProdList mr-3">
+      <div class="single_prod" *ngFor="let product of productsList">
+        <div class="mb-3 relative">
+          <img src={{product.image}} class="w-full">
+        </div>
+        <div class="flex flex-column">
+          <span class="text-prod mb-3">{{product.product_name}}</span>
+          <span class="text-prod-price mb-3">{{product.price}}</span>
+          <p class="p-text-truncate">{{product.desc }}</p>
+          <button  (click)=addtocart(product) type="button" pripple="" class="absolute_button">
+            <i class="pi pi-shopping-cart mr-3 text-base"></i>&nbsp;
+            <span class="text-base">Add to Cart</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 <p-confirmDialog header="Pay Now" icon="pi pi-money-bill"></p-confirmDialog>
     <p-toast position="top-right"></p-toast>
+
+
