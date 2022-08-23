@@ -13,7 +13,7 @@ export class SidebarComponent implements OnInit {
     display
     items: { label: string, icon: string,routerLink:string }[] = 
     [
-      {
+     /*  {
         label: 'Home',
         icon: 'pi pi-fw pi-home',
         routerLink: 'core/home',
@@ -23,7 +23,7 @@ export class SidebarComponent implements OnInit {
         label: 'About',
         icon: 'pi pi-fw pi-info-circle',
         routerLink: 'core/about'
-      },
+      }, */
       {
         label: 'Catalog',
         icon: 'pi pi-fw pi-book',

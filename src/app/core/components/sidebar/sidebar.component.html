@@ -1,8 +1,8 @@
 <header>
     <div class="main-header d-flex justify-content-between p-3 align-items-center border-bottom">
-      <div>
-        <p-sidebar [(visible)]="display" [baseZIndex]="10000"  [style]="{width:'15em'}" >
-          <div *ngFor='let item of items'>
+      <div >
+        <p-sidebar [(visible)]="display" [baseZIndex]="10000"  [fullScreen]="true" class="sidebar">
+          <div *ngFor='let item of items' >
             <div (click)="display = false" class="sidebar-item" [routerLink]="[ item.routerLink ]" >
               <i  class={{item.icon}} ></i>&nbsp;{{ item.label }}
             </div>
@@ -10,7 +10,7 @@
         </p-sidebar>
         <i (click)="display = true" class="pi pi-bars" style="font-size: 1.5em"></i>
       </div>
-      <div>
+      <div [routerLink]="'shop'" class="home">
           <img src="assets/images/cmwr-logo-450.jpg" height="40" class="mr-2">
       </div>
       <div>
