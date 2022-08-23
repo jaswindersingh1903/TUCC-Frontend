@@ -1,0 +1,14 @@
+.createProduct {
+    color: green;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @media screen and (max-width: 480px) {
+    .deskShow{
+      display: none;
+    }
+  }
+  
