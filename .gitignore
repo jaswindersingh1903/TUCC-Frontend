@@ -40,3 +40,13 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json
+.vs/frontend/FileContentIndex/7c3b4f28-2b3d-4e75-a3d3-cec12317909d.vsidx
+.vs/frontend/FileContentIndex/a99eed30-8d53-44de-a6d4-1f3704c564ca.vsidx
+.vs/frontend/FileContentIndex/fc96705d-359f-4224-897d-5d2894d40260.vsidx
+.vs/frontend/v17/.suo
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json
+.vs/frontend/FileContentIndex/a99eed30-8d53-44de-a6d4-1f3704c564ca.vsidx
+.vs/frontend/v17/.suo
