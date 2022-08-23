@@ -13,6 +13,7 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ToastModule} from 'primeng/toast';
 import {BadgeModule} from 'primeng/badge';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import {DialogModule} from 'primeng/dialog';
 
 //local service
 import { ConfirmationService } from 'primeng/api';
@@ -39,7 +40,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     ToastModule,
     BadgeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DialogModule
   ],
   providers: 
   [
