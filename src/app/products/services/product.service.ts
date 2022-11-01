@@ -37,7 +37,7 @@ export class ProductService
 
   create(product): Observable<Product> 
   {
-    return this.httpClient.post<Product>(environment.apiBaseUrl +'/products', JSON.stringify(product), this.httpOptions)
+    return this.httpClient.post<Product>(environment.apiBaseUrl +'/products', product, this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
