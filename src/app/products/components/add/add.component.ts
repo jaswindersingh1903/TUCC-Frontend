@@ -2,7 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import { ProductService} from '../../services/product.service';
+import {ConfirmationService} from 'primeng/api';
 
+import {BreakpointObserver} from '@angular/cdk/layout';
+import {StepperOrientation} from '@angular/material/stepper';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-add',
@@ -11,7 +17,6 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 })
 export class AddComponent implements OnInit 
 {
-  
   uploadedFiles: any[] = [];
   fruits: Array<string> = ["apple", "pear", "kiwi", "banana", "grape", "strawberry", "grapefruit", "melon", "mango", "plum"];
   formGroup: FormGroup;
@@ -33,19 +38,28 @@ export class AddComponent implements OnInit
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   tags= [{name: 'Course'}, {name: 'Church'}, {name: 'ELearn'}];
+  // tags= [];
 
 
   /** Returns a FormArray with the name 'formArray'. */
   get formArray(): AbstractControl | null { return this.formGroup.get('formArray'); }
 
-  /* firstFormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
-  });
-  secondFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
-  }); */
-  isLinear = false;
-  constructor(private _formBuilder: FormBuilder) { }
+  isLinear = true;
+  stepperOrientation: Observable<StepperOrientation>;
+
+  constructor(
+    private _formBuilder: FormBuilder,
+    private productservice:ProductService,
+    breakpointObserver: BreakpointObserver,
+    private confirmationService: ConfirmationService,
+    ) 
+    {
+      this.stepperOrientation = breakpointObserver
+      .observe('(min-width: 800px)')
+      .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));
+     
+    }
+
   relatedProducts: string[] = 
                             [
                               '(KNOR1001) Five Foundational Practices of Christian Spirituality', '(EDGE1002) Getting Ready for the Journey',
@@ -55,7 +69,8 @@ export class AddComponent implements OnInit
   {
     this.formInit();
   }
-
+  
+  //to init the form
   formInit()
   {
     this.formGroup = this._formBuilder.group(
@@ -74,17 +89,19 @@ export class AddComponent implements OnInit
             productShowInCatalog: [1, Validators.required],
             productFeatured: [1 , Validators.required],
             productDescription: ['', Validators.required],
-            productDescription2: ['', Validators.required],
+            // productDescription2: ['', Validators.required],
             productShortDescription: ['', Validators.required],
-            productKeywords: ['', Validators.required]
+            // productKeywords: ['', Validators.required]
+            productKeywords: []
           }),
           this._formBuilder.group({
             productMetaTitle: ['', Validators.required],
             productMetaDescription: ['', Validators.required],
             productAllowInvoice: [1, Validators.required],
-            productThumbnail: [''],
+            productImage: [null, Validators.required]
+            /* productThumbnail: [''],
             productHeadingImage: [''],
-            productLargeImage: ['']
+            productLargeImage: [''] */
           }),
           this._formBuilder.group({
             productInventory: [5, Validators.required],
@@ -96,7 +113,7 @@ export class AddComponent implements OnInit
           }),
           this._formBuilder.group({
             productFinanceCode: [this.GenerateRandomId(5), Validators.required],
-            productOwnerEmail: ['', Validators.required],
+            subscriberEmail: ['', Validators.required],
             productRealtedProducts: ['', Validators.required],
             productRealtedCategories: ['', Validators.required],
             ProductIsActive: [1, Validators.required],
@@ -105,25 +122,71 @@ export class AddComponent implements OnInit
       });
   }
 
+  //to add a product
   addProduct()
   {
-    // console.table(this.formGroup.value);
-    console.log(this.formGroup.value);
-
-  }
-
- onUpload(event) 
- {
-    for(let file of event.files) {
-        this.uploadedFiles.push(file);
-    }
+    // console.log();
+    // for (let item of this.formGroup.value) {
+    // console.log([...JSON.stringify(this.formGroup.value[0]),...JSON.stringify(this.formGroup.value[1])]);
+     
+  // }    
+    // console.log([...this.formArray['controls'][0].value,...this.formArray['controls'][1].value]);
+    // console.log(this.uploadedFiles);
+    // let formData = new FormData();
+    // // this.formGroup.append("product_image",this.uploadedFiles);
+    // formData.append('abc',this.formGroup.value[0]);
+    // formData.append('abc',this.formGroup.value[2]);
+    // console.log(this.formData);
+    
+    // const finalArray = [...this.formGroup.value[0], ...this.formGroup.value[1],this.formGroup.value[2],this.formGroup.value[3],this.formGroup.value[4]];
+    // console.log('here',finalArray);return;
+    // this.formGroup.value[2].productImage = this.uploadedFiles
+    this.confirmationService.confirm
+    (
+      {
+        message: 'Are you sure that you want to add this product?',
+        accept: () => 
+        {
+          // const finalArray = [...this.formGroup.value[0], ...this.formGroup.value[1],this.formGroup.value[2],this.formGroup.value[3],this.formGroup.value[4]];
+          let form_value = this.formGroup.value.formArray;
+          //  var mergedForm = Object.assign(form_value[0],form_value[1],form_value[2],form_value[3],form_value[4]);
+          var mergedForm = Object.assign(form_value[0],form_value[1],form_value[2],form_value[3],form_value[4]);
+           
+          
+         
+          this.productservice.create(mergedForm).subscribe(res=>{
+            // this.data =res;
+            console.log(res)
+          })
+        }
+    });
     
   }
 
-  upload(event:Event){
-    console.log(event)
+  onUpload(event) 
+  {
+   /*  for(let file of event.files) 
+    {
+      this.uploadedFiles.push(file);
+      console.log(this.uploadedFiles);
+    } */
+    this.uploadedFiles  = event.target.files[0]
+    console.log(this.uploadedFiles);
+    
+    // this.uploadedFiles  = event.target.files[0]
+    // this.uploadedFiles.push(event.files[0]);
+    // console.log(this.uploadedFiles);
+
+  } 
+
+  /* For steps validation */
+  completed = false;
+  complete(step: number): void 
+  {
+    this.completed = true;
   }
 
+  //add keyword for tags
   addKeyword(event: MatChipInputEvent): void 
   {
     const value = (event.value || '').trim();
@@ -137,6 +200,7 @@ export class AddComponent implements OnInit
     event.chipInput!.clear();
   }
 
+  //remove keyword for tags
   removeKeyword(tag): void 
   {
     const index = this.tags.indexOf(tag);
@@ -146,7 +210,7 @@ export class AddComponent implements OnInit
     }
   }
 
-
+  //for randomId
   GenerateRandomId(length) 
   {
     var result           = '';
