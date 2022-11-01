@@ -19,10 +19,14 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table'  
 import {MatChipsModule} from '@angular/material/chips';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 import {ReactiveFormsModule} from '@angular/forms';
 
 import {FileUploadModule} from 'primeng/fileupload';
+import { ConfirmationService } from 'primeng/api';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+
 import {MultiSelectModule} from 'primeng/multiselect';
 import { IndexComponent } from './components/index/index.component';
 
@@ -51,10 +55,13 @@ import { IndexComponent } from './components/index/index.component';
     MatIconModule,
     MatTableModule,
     MatChipsModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSlideToggleModule,
+    ConfirmDialogModule
   ],
   providers:[
-    ProductService
+    ProductService,
+    ConfirmationService
   ]
 })
 export class ProductsModule { }
