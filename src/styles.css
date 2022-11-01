@@ -7,3 +7,91 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.custom-table-layout {
+  box-shadow: 0 0 3px #ddd;
+  padding: 2rem;
+  border-radius: 10px;
+  margin-top: 50px;
+}
+.custom-table-layout table {
+  width: 100%;
+}
+section.custom-table-layout table th {
+  font-weight: 700;
+  color: #343a40;
+  background: #f8f9fa;
+}
+.custom-table-layout table td {
+  padding: 10px 0;
+}
+.custom-table-layout table td img {
+  box-shadow: 0 1px 10px #0000001f,0 4px 5px #00000024,0 2px 4px -1px #0003!important;
+  width: 80px;
+}
+.custom-table-layout table td.mat-column-reviews mat-icon{
+  color: rgb(193 215 45);
+  font-size: 18px;
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+}
+.stock {
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 12px;
+}
+.greenStock {
+  background: #dfffdf;
+}
+.redStock {
+  background: #ffdfdf;
+}
+.action-icon mat-icon {
+  font-size: 20px;
+  width: 22px;
+  height: 22px;
+  vertical-align: bottom;
+}
+.action-icon.edit mat-icon {
+  color: grey;
+}
+.action-icon.delete mat-icon {
+  color: red;
+}
+.table-responsive table td, .table-responsive table th {
+  white-space: nowrap;
+  padding: 10px;
+}
+.text-right {
+  text-align: right;
+  width: 100%;
+  margin-right: 10px;
+  margin-top: 15px;
+}
+.primaryBtn {
+  background: rgb(120 138 0);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  margin: 20px 0 0;
+}
+.greyBtn {
+  background: rgb(198 198 198);
+  margin-right: 15px !important;
+}
+.three-column-form {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.prod_container .three-column-form mat-form-field {
+  width: 31% !important;
+}
+.thumbnail-box {
+  width: 48%;
+  margin: 5px;
+}
