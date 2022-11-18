@@ -28,10 +28,10 @@ export class ViewComponent implements OnInit {
   }
 
   deleteProducts(id){
-    this.ProductService.delete(id).subscribe(res => {
+    this.ProductService.deleteById(id).subscribe(res => {
          this.productsList = this.productsList.filter(item => item.id !== id);
          console.log('products deleted successfully!');
     })
-  }
+   }
 
 }

@@ -43,8 +43,9 @@
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef>Actions</th>
           <td mat-cell *matCellDef="let element">
-            <a href="#" class="action-icon edit" [routerLink]="['/product/', 'edit'  ]"><mat-icon>edit</mat-icon></a>
-            <a href="#" class="action-icon delete"><mat-icon>delete_outline</mat-icon></a>
+            <!-- <a href="#" class="action-icon edit" [routerLink]="['/product/', 'edit'  ]"><mat-icon>edit</mat-icon></a> -->
+            <a  class="action-icon edit" (click)="edit(element.id)"><mat-icon>edit</mat-icon></a>
+            <a  class="action-icon delete" (click)="delete(element._id)"><mat-icon>delete_outline</mat-icon></a>
           </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

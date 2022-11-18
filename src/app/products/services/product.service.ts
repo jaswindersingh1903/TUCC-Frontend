@@ -43,23 +43,24 @@ export class ProductService
     )
   }
 
-  find(id): Observable<Product>
+  getDataById(id:string): Observable<Product>
   {
-    return this.httpClient.get<Product>(environment.apiBaseUrl +'/products/' + id)
+    // return this.httpClient.get<Product>(environment.apiBaseUrl +'/products/' + id)
+    return this.httpClient.get<Product>(environment.apiBaseUrl+id)
     .pipe(
       catchError(this.errorHandler)
     )
   }
 
-  update(id, product): Observable<Product> 
+  update(id:string, product:string,body:any): Observable<Product> 
   {
-    return this.httpClient.put<Product>(environment.apiBaseUrl +'/products/' +  id, JSON.stringify(product), this.httpOptions)
+    return this.httpClient.put<Product>(environment.apiBaseUrl +'/products/' +  id, JSON.stringify(product,body), this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
   }
 
-  delete(id)
+  deleteById(id)
   {
     return this.httpClient.delete<Product>(environment.apiBaseUrl+'/products/' +  id, this.httpOptions)
     .pipe(
