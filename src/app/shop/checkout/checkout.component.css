@@ -3,6 +3,11 @@
     margin: 25px;
     padding: 25px;
 }
+.checkoutCard{
+    height: 60px;
+    margin-top: 6px;
+    
+}
 
 .center img {
     text-decoration: none;

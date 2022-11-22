@@ -7,15 +7,16 @@
                 the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
                 scrambled it to make a type specimen book.</p>
         </div> -->
-
+<div class="card">
         <div class="row">
             <div class="col-md-3 order-md-2 mb-4">
-                <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-muted">Checkout</span>
-                    <span class="badge badge-secondary badge-pill">3</span>
-                </h4>
+                
                 <ul class="list-group mb-3">
-                    <li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let product of products; let i = index">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-muted">Checkout</h4>
+                        <span class="badge badge-secondary badge-pill">3</span>
+                    </h4>
+                    <li class="list-group-item d-flex justify-content-between lh-condensed checkoutCard" *ngFor="let product of products; let i = index">
                         <div>
                             <h6 class="my-0">{{product.product_name}}</h6>
                             <small class="text-muted">{{product.price | currency:'CAD'}}</small>
@@ -45,21 +46,21 @@
                     <div class="row">
                         <div class="col-md-3 mb-3">
                             <label for="firstName">First name</label>
-                            <input type="text" class="form-control" name="firstName" id="firstName" placeholder="" value="" required  formControlName="firstName">
+                            <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Jhon" value="" required  formControlName="firstName">
                             <div class="invalid-feedback">
                                 Valid first name is required.
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="lastName">Last name</label>
-                            <input type="text" class="form-control" name="lastName" formControlName="lastName" id="lastName" placeholder="" value="" required >
+                            <input type="text" class="form-control" name="lastName" formControlName="lastName" id="lastName" placeholder="Denma" value="" required >
                             <div class="invalid-feedback">
                                 Valid last name is required.
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="email">Email <span class="text-muted"></span></label>
-                            <input type="email" class="form-control"  formControlName="email" placeholder="you@example.com">
+                            <input type="email" class="form-control"  formControlName="email" placeholder="jhon@example.com">
                             
                             <div class="invalid-feedback">
                                 Please enter a valid email address for shipping updates.
@@ -190,9 +191,10 @@
                         </div>
                     </div> -->
                     <hr class="mb-4">
-                    <button class="btn btn-primary btn-lg btn-block" type="submit" >Pay Now</button>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="!CheckoutFormData.valid" >Pay Now</button>
                 </form>
             </div>
+        </div>
         </div>
 
     <!--  <footer class="my-5 pt-5 text-muted text-center text-small">

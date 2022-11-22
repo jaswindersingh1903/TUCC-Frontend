@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {FormGroup, FormControl,Validators} from '@angular/forms';
 
 //services
@@ -16,6 +16,8 @@ import { environment } from "../../../environments/environment";
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
+  // @Input() disabled?: boolean = false;
+ disableBtn: boolean=false;
 
   constructor(
     private cartService : CartService,
@@ -29,7 +31,7 @@ export class CheckoutComponent implements OnInit {
   success: boolean = false
   failure:boolean = false
 
-  CheckoutFormData;
+  CheckoutFormData: FormGroup;
   email:string ='';
   lastName:string ='';
   firstName:string ='';
