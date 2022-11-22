@@ -35,6 +35,17 @@ export class CartService
     // console.log(this.productList)
   }
   
+  incrementCartCount(amount: number) {
+    this.cartItemList = this.cartItemList + amount;
+  }
+
+  decrementCartCount(amount: number) {
+    this.cartItemList = this.cartItemList - amount;
+  }
+
+  
+
+
   getTotalPrice() : number
   {
     let grandTotal = 0;
