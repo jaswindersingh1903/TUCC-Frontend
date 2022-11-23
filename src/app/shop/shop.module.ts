@@ -22,13 +22,18 @@ import { CheckoutService } from './services/checkout.service';
 import { CartService } from './services/cart.service';
 //local components
 import { CheckoutComponent } from './checkout/checkout.component';
-
+import {CartQuantityComponent} from './cart-quantity/cart-quantity.component'
+import { RouterModule } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
   declarations: 
   [
     CartComponent,
     FeaturedComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    CartQuantityComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +46,26 @@ import { CheckoutComponent } from './checkout/checkout.component';
     BadgeModule,
     FormsModule,
     ReactiveFormsModule,
-    DialogModule
+    DialogModule,
+    MatIconModule, 
+    MatButtonModule, 
+    MatTooltipModule,
+     RouterModule
+  ],
+  exports:[
+    CardModule,
+    ButtonModule,
+    SplitButtonModule,
+    ConfirmDialogModule,
+    ToastModule,
+    BadgeModule,
+    FormsModule,
+    ReactiveFormsModule,
+    DialogModule,
+    MatIconModule, 
+    MatButtonModule, 
+    MatTooltipModule,
+     RouterModule
   ],
   providers: 
   [
