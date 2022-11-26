@@ -19,7 +19,7 @@
 <div class="container" *ngIf="0">
   <div class="row">
     <!-- <p-card> -->
-    <ng-container *ngFor="let product of productsList">
+    <ng-container *ngFor="let product of productsList; let i = index">
       <div class="card col-md-3">
         <!-- <img src="{{item.image}}" alt=""> -->
         <img src="../../../assets/images/EDGE1030Coursethumbnail.png" alt="">
@@ -44,6 +44,7 @@
 
 
         <button class="btn btn-primary" (click)=addtocart(product)>Add to cart</button>
+       
       </div>
     </ng-container>
     <!-- </p-card> -->
@@ -55,7 +56,7 @@
     <h3>Popular Courses</h3>
   </div>
   <div class="allProdList mr-3">
-    <div class="single_prod" *ngFor="let product of productsList">
+    <div class="single_prod" *ngFor="let product of productsList" >
       <div class="mb-3 relative">
         <img src={{product.image}} class="w-full">
       </div>
@@ -67,10 +68,12 @@
         <span class="text-prod-price mb-3">{{product.price}}</span>
         <p class="p-text-truncate">{{product.desc }}</p>
         <!-- <span > -->
-          <button (click)=addtocart(product) type="button" pripple=""
+          <button  (click)=addtocart(product)  type="button" pripple=""
             class="absolute_button">
             <i class="pi pi-shopping-cart mr-3 text-base"></i>&nbsp;
-            <span class="text-base">Add to Cart</span>
+            <span class="text-base"   (click)=addtocart(product)>Add to Cart</span>
+            <!-- <span class="text-base"   (click)="sendNumber()">Add to Cart </span> -->
+
           </button>
           <!-- <button type="button" pripple="" class="absolute_button">
             <i class="pi pi-window-maximize mr-3 text-base"></i>&nbsp;
@@ -95,6 +98,6 @@
         cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <ng-template pTemplate="footer">
         <p-button (click)="viewMore=false" label="No" styleClass="p-button-text"></p-button>
-        <p-button (click)="viewMore=false" label="Yes" styleClass="p-button-text"></p-button>
+        <p-button (click)="viewMore=true" label="Yes" styleClass="p-button-text"></p-button>
         </ng-template>
 </p-dialog>

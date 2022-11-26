@@ -27,13 +27,16 @@ import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { SidebarComponent } from '../core/components/sidebar/sidebar.component';
+
 @NgModule({
   declarations: 
   [
     CartComponent,
     FeaturedComponent,
     CheckoutComponent,
-    CartQuantityComponent
+    CartQuantityComponent,
+   
   ],
   imports: [
     CommonModule,
