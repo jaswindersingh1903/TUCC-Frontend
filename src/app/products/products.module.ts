@@ -61,7 +61,8 @@ import { IndexComponent } from './components/index/index.component';
   ],
   providers:[
     ProductService,
-    ConfirmationService
+    ConfirmationService,
+    
   ]
 })
 export class ProductsModule { }

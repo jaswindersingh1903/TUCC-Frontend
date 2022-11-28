@@ -7,7 +7,7 @@ import { IndexComponent} from './components/index/index.component';
 
 const routes: Routes = [
   {
-    path: 'view',
+    path: '',
     component: ViewComponent,
   },
   {
@@ -19,11 +19,11 @@ const routes: Routes = [
     component: EditComponent,
   },
   {
-    path: 'index',
+    path: 'indx',
     component: IndexComponent,
   },
   {
-    path:'',redirectTo:'index',pathMatch:'full'
+    path:'',redirectTo:'view',pathMatch:'full'
   }
 
 ];

@@ -1,0 +1,86 @@
+
+     [
+      {
+        "product_id": 1,
+        "modle_product_id": "M14",
+        "product_name": "Watch",
+        "description":"Buy the best-in-class smart watches from Noise - India's No.1 wearable watch brand.",
+        "image":"assets/images/watch.jpg",
+        "price":"1999"
+      },
+      {
+        "product_id": 2,
+        "modle_product_id": "M11",
+        "product_name": "Man Shoes",
+        "description":"Classic adidas sneakers boast the iconic 3-Stripes for vintage feels that perfectly balance every look between classy and casual.",
+        "image":"assets/images/shoes.jpg",
+        "price":"1299"
+      },
+      {
+        "product_id": 3,
+        "modle_product_id": "M13",
+        "product_name": "Make up kit",
+        "description":"Professional ladies Makeup Kits from best brands Lakme",
+        "image":"assets/images/makeup.jpg",
+        "price":"475"
+      },
+      {
+        "product_id": 4,
+        "modle_product_id": "M02",
+        "product_name": "Nivea Lotion",
+        "description":"Low Prices on skin-care creams, lotions, serums & more",
+        "image":"assets/images/nivea.jpg",
+        "price":"110"
+      },
+      {
+        "product_id": 5,
+        "modle_product_id": "M03",
+        "product_name": "Night face Cream",
+        "description":"Best overall night cream. CeraVe Skin Renewing Night Crea",
+        "image":"assets/images/night.jpg",
+        "price":"330"
+      },
+      {
+        "product_id": 6,
+        "modle_product_id": "M01",
+        "product_name": "saree",
+        "description":"Sarees- Pick from the designer range of Saris online for ladies & girls",
+        "image":"assets/images/saree.jpg",
+        "price":"1200"
+      },
+      {
+        "product_id": 7,
+        "modle_product_id": "M04",
+        "product_name": "Jeans",
+        "description":"Buy Jeans for men",
+        "image":"assets/images/jeans.jpg",
+        "price":"999"
+      },
+      {
+        "product_id": 8,
+        "modle_product_id": "M09",
+        "product_name": "Perfume",
+        "description":"Perfume for Women – Browse through a wide range of perfumes for women",
+        "image":"assets/images/perfume.jpg",
+        "price":"436"
+      }
+      ,
+      {
+        "product_id": 9,
+        "modle_product_id": "M07",
+        "product_name": "Mug",
+        "description":"Buy Mugs of different types like coffee mug",
+        "image":"assets/images/mug.jpg",
+        "price":"160"
+      },
+      {
+        "product_id": 10,
+        "modle_product_id": "M04",
+        "product_name": "Tiffine",
+        "description":"Lunch Boxes ",
+        "image":"assets/images/tiffinebox.jpg",
+        "price":"350"
+      }
+    ]
+   
+  
