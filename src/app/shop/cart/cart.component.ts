@@ -7,9 +7,10 @@ import { CartService } from "../services/cart.service";
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-
+  prodId: any
   public products: any = [];
   public grandTotal !: number;
+  public price!:number
 
   constructor(
     private cartService: CartService,
@@ -40,16 +41,16 @@ export class CartComponent implements OnInit {
     this.cartService.removeAllCart();
   }
 
-  getCartDetails: any = []; //cart details done by vaishali
+  // products: any = []; //cart details done by vaishali
   CartDetails() {
     if (localStorage.getItem('localCart')) {
-      this.getCartDetails = JSON.parse(localStorage.getItem('localCart'));
+      this.products = JSON.parse(localStorage.getItem('localCart'));
     }
   }
   loadCart() { //load cart  done by vaishali
     if (localStorage.getItem('localCart')) {
-      this.getCartDetails = JSON.parse(localStorage.getItem('localCart'));
-      this.total = this.getCartDetails.reduce
+      this.products = JSON.parse(localStorage.getItem('localCart'));
+      this.total = this.products.reduce
         (function (acc, val) {
           return acc + (val.amt * val.qnt);
         }, 0);
@@ -64,5 +65,30 @@ export class CartComponent implements OnInit {
   checkout() {
     // alert('');
   }
+  incQnt(prodId, quantity) {
+    for (let i = 0; i < this.products.length; i++) {
+      if (this.products[i].prodId === prodId) {
+        if (quantity != 5)
+          this.products[i].quantity = parseInt(quantity) + 1;
+      }
+    }
+    localStorage.setItem('localCart', JSON.stringify(this.products));
+    this.loadCart();
+  }
+
+  decQnt(prodId, quantity) {
+    for (let i = 0; i < this.products.length; i++) {
+      if (this.products[i].prodId === prodId) {
+        if (quantity != 1)
+          this.products[i].quantity = parseInt(quantity) - 1;
+      }
+    }
+    localStorage.setItem
+      ('localCart',
+        JSON.stringify
+          (this.products));
+    this.loadCart();
+  }
+  
 
 }

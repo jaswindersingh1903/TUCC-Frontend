@@ -65,15 +65,31 @@
           {{product.product_name}}
           <i class="pi pi-window-maximize mr-3 text-base"></i>&nbsp;
           </span>
-        <span class="text-prod-price mb-3">{{product.price}}</span>
+          <h2 class="text-prod-price mb-3 price">{{product.price}}</h2>
+          <div class="content" >
+            
+            <!-- <button type="button" class="btn plus" (click)="inc(product)">
+              <i class="pi pi-plus"></i>
+  
+          </button> -->
+          <!-- <span class="text-prod mb-3 quantity">{{product.quantity}}</span> -->
+
+          <!-- <button type="button" class="btn" (click)="dec(product)">
+            <i class="pi pi-minus"></i>
+          </button> -->
+          </div>
+         
+        
         <p class="p-text-truncate">{{product.desc }}</p>
+          
+        
+       
+   
         <!-- <span > -->
           <button  (click)=addtocart(product)  type="button" pripple=""
             class="absolute_button">
             <i class="pi pi-shopping-cart mr-3 text-base"></i>&nbsp;
             <span class="text-base"   (click)=addtocart(product)>Add to Cart</span>
-            <!-- <span class="text-base"   (click)="sendNumber()">Add to Cart </span> -->
-
           </button>
           <!-- <button type="button" pripple="" class="absolute_button">
             <i class="pi pi-window-maximize mr-3 text-base"></i>&nbsp;

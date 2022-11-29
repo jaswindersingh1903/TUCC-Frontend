@@ -18,6 +18,19 @@ h4,
 h6 {
     font-weight: 400;
 }
+.btn1 {
+    background:
+        rgb(58, 79, 119);
+    border-radius: 50%;
+    font-size: 16px;
+    color: #fff;
+    margin: 0 3px;
+}
+
+.content  {
+    font-weight: 800;
+    font-size: 18px;
+}
 
 .center {
     position: absolute;

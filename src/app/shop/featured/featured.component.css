@@ -10,6 +10,31 @@
     border-radius: .25rem;
 }
 
+.btn {
+  background: rgba(64, 79, 148, 0.897);
+  border-radius: 70%;
+  font-size: 16px;
+  color: #fff;
+  margin: 0 3px;
+
+}
+.content span {
+  font-weight: 800;
+  font-size: 18px;
+  margin-left: 90px;
+}
+.price{
+  margin-left: 130px;
+}
+.quantity{
+  text-align: center;
+  margin-right: 70px;
+
+}
+.plus{
+  margin-left: 40px;
+  margin-left: 50px;
+}
 .item img {
     width: 64px;
 }
