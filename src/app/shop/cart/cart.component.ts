@@ -10,21 +10,30 @@ export class CartComponent implements OnInit {
   prodId: any
   public products: any = [];
   public grandTotal !: number;
-  public price!:number
-
+  public price!: number
+  totalCartItems: number = 0
+  total: number = 0;
   constructor(
     private cartService: CartService,
     private auth: AuthService) { }
-  total: number = 0;
+
 
   ngOnInit(): void {
+    this.getProductlist()
     this.CartDetails()
     this.loadCart()
     this.cartNumberFunc()
+  }
+
+  getProductlist() {// list out product done by vaishali
+    if (localStorage.getItem('localCart') != null) {
+      var cartCount = JSON.parse(localStorage.getItem('localCart'));
+      this.totalCartItems = cartCount.length
+      console.log(cartCount)
+    }
     this.cartService.getProducts()
       .subscribe(
         res => {
-          this.cartNumberFunc()
           console.log('cart component', res)
           this.products = res;
           this.grandTotal = this.cartService.getTotalPrice();
@@ -32,6 +41,40 @@ export class CartComponent implements OnInit {
       )
 
   }
+  singleDelete(product) { //single product delete done by vaishali
+    console.log(product);
+    if (localStorage.getItem('localCart')) {
+      this.products = JSON.parse
+        (localStorage.getItem('localCart'));
+      for (let i = 0; i < this.products.length; i++) {
+        if (this.products[i].prodId === product) {
+          this.products.splice(i, 1);
+          localStorage.setItem('localCart', JSON.stringify(this.products));
+          this.loadCart();
+          this.cartNumberFunc();
+        }
+      }
+    }
+  }
+
+  removeall(product) { //remove all products done by vaishali
+    (localStorage.removeItem('localCart'));
+    this.products = [];
+    this.grandTotal = 0;
+    for (let i = 0; i < this.products.length; i++) {
+      if (this.products[i].prodId === product) {
+        this.products.splice(i, 1);
+        localStorage.setItem('localCart', JSON.stringify(this.products));
+        this.loadCart();
+        this.cartNumberFunc();
+      }
+
+    }
+    location.reload();
+
+  }
+
+
 
   removeItem(item: any) {
     this.cartService.removeCartItem(item);
@@ -50,9 +93,9 @@ export class CartComponent implements OnInit {
   loadCart() { //load cart  done by vaishali
     if (localStorage.getItem('localCart')) {
       this.products = JSON.parse(localStorage.getItem('localCart'));
-      this.total = this.products.reduce
+      this.grandTotal = this.products.reduce
         (function (acc, val) {
-          return acc + (val.amt * val.qnt);
+          return acc + (val.price * val.quantity);
         }, 0);
     }
   }
@@ -65,7 +108,7 @@ export class CartComponent implements OnInit {
   checkout() {
     // alert('');
   }
-  incQnt(prodId, quantity) {
+  incQnt(prodId, quantity) { // qun inc done by vaishali
     for (let i = 0; i < this.products.length; i++) {
       if (this.products[i].prodId === prodId) {
         if (quantity != 5)
@@ -76,19 +119,14 @@ export class CartComponent implements OnInit {
     this.loadCart();
   }
 
-  decQnt(prodId, quantity) {
+  decQnt(prodId, quantity) {// qnt dec done by vaishali
     for (let i = 0; i < this.products.length; i++) {
       if (this.products[i].prodId === prodId) {
         if (quantity != 1)
           this.products[i].quantity = parseInt(quantity) - 1;
       }
     }
-    localStorage.setItem
-      ('localCart',
-        JSON.stringify
-          (this.products));
+    localStorage.setItem('localCart', JSON.stringify(this.products));
     this.loadCart();
   }
-  
-
 }

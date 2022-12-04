@@ -1,60 +1,75 @@
 <ng-container *ngIf="products.length !=0">
     <div class="container">
         <div class="">
-        <div class="card-table">
-            <div class="cart-product">
-                <table class="table table-responsive">
-                    <thead>
-                        <tr>
-                            <th>Sr.No</th>
-                            <th>Product Name</th>
-                            <th>Product Image</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let product of products; let i = index">
-                            <td>{{i+1}}</td>
-                            <td>{{product.product_name}}</td>
-                            <!-- <td><img style="width: 120px;" src="{{product.image}}" alt=""></td> -->
-                            <td><img style="width: 120px;" src="../../../assets/images/EDGE1030Coursethumbnail.png" alt=""></td>
-                            <!-- <td style="width: 25%;">{{product.description}}</td> -->
-                            <td style="width: 25%;">This course, the first in EDGE's Signpost Series, is designed to help communities of faith in crisis mode take the first steps on a change journey. Participants will learn to assess and contextualize their current situation and to build a leadership team to address issues. You'll see that a way back to hope is possible!</td>
-                            <th style="width: 12%;">{{product.price}}</th>
-                            <div class="content">
-                                <button type="button" class="btn1" (click)="incQnt(product.prodId, product.quantity)">
-                                    <i class="pi pi-plus"></i>
-                                </button>
-                                <span>{{product.quantity}}</span>
-                                <button type="button" class="btn1" (click)="decQnt(product.prodId, product.quantity)">
-                                    <i class="pi pi-minus"></i>
-                                </button>
-                            </div>
-                            <!-- <td style="width: 12%;">{{product.quantity}}</td> -->
-                            <td style="width: 12%;">{{product.total}}</td>
-                            <td>
-                                {{product.quantity * product.price | number}}
-                                <!-- <p-button  icon="pi pi-trash"  (click)=removeItem(product) [style]="{'margin-left': '.7em'}" label="Danger"></p-button> -->
-                                <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger"  (click)=removeItem(product) ></button>
-                                <!-- <button (click)="removeItem(product)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button> -->
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="4"></td>
-                            <td><button (click)="emptycart()" class="btn btn-danger">Empty Cart</button></td>
-                            <td><button routerLink="/shop" class="btn btn-primary">Shop More</button></td>
-                            <td><button (click)="checkout()" routerLink="/shop/checkout" class="btn btn-success">Checkout</button></td>
-                            <td *ngFor="let product of products"><strong>Grand Total : $ {{product.quantity * product.price | number}}
-                            </strong></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="card-table">
+                <div class="cart-product">
+                    <div *ngIf="products">
+                        <table class="table table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>Sr.No</th>
+                                    <th>Product Name</th>
+                                    <th>Product Image</th>
+                                    <th>Description</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let product of products; let i = index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{product.product_name}}</td>
+                                    <!-- <td><img style="width: 120px;" src="{{product.image}}" alt=""></td> -->
+                                    <td><img style="width: 120px;"
+                                            src="../../../assets/images/EDGE1030Coursethumbnail.png" alt=""></td>
+                                    <!-- <td style="width: 25%;">{{product.description}}</td> -->
+                                    <td style="width: 25%;">This course, the first in EDGE's Signpost Series, is
+                                        designed to help communities of faith in crisis mode take the first steps on a
+                                        change journey. Participants will learn to assess and contextualize their
+                                        current situation and to build a leadership team to address issues. You'll see
+                                        that a way back to hope is possible!</td>
+                                    <th style="width: 12%;">{{product.price}}</th>
+                                    <div class="content qt">
+                                        <button pButton type="button" class="btn1"
+                                            (click)="incQnt(product.prodId, product.quantity)">
+                                            <i class="pi pi-plus"></i>
+                                        </button>
+                                        <span>{{product.quantity}}</span>
+                                        <button pButton type="button" class="btn1"
+                                            (click)="decQnt(product.prodId, product.quantity)">
+                                            <i class="pi pi-minus"></i>
+                                        </button>
+                                    </div>
+                                    <!-- <td style="width: 12%;">{{product.quantity}}</td> -->
+                                    <td style="width: 12%;">{{product.quantity * product.price | number}}</td>
+                                    <td>
+                                        <!-- {{product.quantity * product.price | number}} -->
+                                        <!-- <p-button  icon="pi pi-trash"  (click)=removeItem(product) [style]="{'margin-left': '.7em'}" label="Danger"></p-button> -->
+                                        <button pButton pRipple type="button" icon="pi pi-trash"
+                                            class="p-button-rounded p-button-danger"
+                                            (click)="singleDelete(product.prodId)"></button>
+                                        <!-- <button (click)="removeItem(product)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button> -->
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"></td>
+                                    <!-- <td><button (click)="emptycart()" class="btn btn-danger" >Empty Cart</button></td> -->
+                                    <td><button type="button" icon="pi pi-trash" class="btn btn-danger"
+                                            (click)="removeall(prodId)">Empty Cart</button></td>
+
+                                    <td><button routerLink="/shop" class="btn btn-primary">Shop More</button></td>
+                                    <td><button (click)="checkout()" routerLink="/shop/checkout"
+                                            class="btn btn-success">Checkout</button></td>
+                                    <!-- <td *ngFor="let product of products"><strong>Grand Total : $ {{product.quantity * product.price | number}}</strong> -->
+                                    <td><strong>Grand Total : ${{grandTotal}}</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-        </div>
         </div>
     </div>
 </ng-container>
@@ -65,7 +80,8 @@
             <h5 class="card-title">My Cart</h5>
         </div>
         <div class="center">
-            <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" alt="">
+            <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
+                alt="">
             <h4>Your cart is empty!</h4>
             <h6>Add item to it now</h6>
             <button routerLink="/shop" class="btn btn-primary">Shop Now</button>

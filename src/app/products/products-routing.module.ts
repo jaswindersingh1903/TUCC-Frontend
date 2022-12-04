@@ -19,11 +19,11 @@ const routes: Routes = [
     component: EditComponent,
   },
   {
-    path: 'indx',
+    path: 'index',
     component: IndexComponent,
   },
   {
-    path:'',redirectTo:'view',pathMatch:'full'
+    path:'',redirectTo:'index',pathMatch:'full'
   }
 
 ];
