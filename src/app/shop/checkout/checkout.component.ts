@@ -41,21 +41,23 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void 
   {
+    this.getTotalAmount()
     this.initForm();
     this.cartService.getProducts()
-    .subscribe(
-      res=>
-      {
-        this.products = res;
-        this.grandTotal = this.cartService.getTotalPrice();
+    // .subscribe(
+    //   res=>
+    //   {
+    //     this.products = res;
+    //     this.grandTotal = this.cartService.getTotalPrice();
 
-        console.log('grandTotal',this.grandTotal)
-        console.log('this.product',this.products)
+    //     console.log('grandTotal',this.grandTotal)
+    //     console.log('this.product',this.products)
 
-      }
-    )
+    //   }
+    // )
     this.invokeStripe();
   }
+  
   //init form
   initForm(){
     this.CheckoutFormData = new FormGroup(
@@ -172,6 +174,16 @@ export class CheckoutComponent implements OnInit {
     };
 
    
+  }
+
+  getTotalAmount() { //load cart  done by vaishali
+    if (localStorage.getItem('localCart')) {
+      this.products = JSON.parse(localStorage.getItem('localCart'));
+      this.grandTotal = this.products.reduce
+        (function (acc, val) {
+          return acc + (val.price * val.quantity);
+        }, 0);
+    }
   }
 
 

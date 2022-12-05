@@ -19,8 +19,8 @@
                     <li class="list-group-item d-flex justify-content-between lh-condensed checkoutCard" *ngFor="let product of products; let i = index">
                         <div>
                             <h6 class="my-0">{{product.product_name}}</h6>
-                            <small class="text-muted">{{product.price | currency:'CAD'}}</small>
-                            <small class="text-muted">{{product.price | currency:'CAD'}}</small>
+                            <small class="text-muted">{{product.total | currency:'CAD'}}</small>
+                            <small class="text-muted">{{product.total | currency:'CAD'}}</small>
                         </div>
                         <!-- <span class="text-muted">{{product.price}}</span> -->
                     </li>
