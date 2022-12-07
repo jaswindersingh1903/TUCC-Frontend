@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import {FormGroup, FormControl,Validators} from '@angular/forms';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import {FormGroup, FormControl,Validators, FormControlDirective} from '@angular/forms';
 
 //services
 import { CheckoutService } from '../services/checkout.service';
@@ -18,7 +18,10 @@ import { environment } from "../../../environments/environment";
 export class CheckoutComponent implements OnInit {
   // @Input() disabled?: boolean = false;
  disableBtn: boolean=false;
+ couponCode = new FormControl('');
+  giftCardCode = new FormControl('');
 
+  @ViewChild(FormControlDirective) codesDirective: FormControlDirective | undefined
   constructor(
     private cartService : CartService,
     private confirmationService: ConfirmationService,
@@ -184,6 +187,36 @@ export class CheckoutComponent implements OnInit {
           return acc + (val.price * val.quantity);
         }, 0);
     }
+  }
+
+
+  //coupon code
+
+  private updateOrder(
+    // order: Order, params: UpdateOrderParams[], codeType: string
+    ) {
+    // this.order.updateOrder(order, params)
+    //   .subscribe(
+    //     () => {
+    //       alert(`Successfully added ${codeType} code.`, 'Close',
+    //       //  { duration: 8000 }
+    //        );
+    //       this.couponCode.reset();
+    //       this.giftCardCode.reset();
+    //       this.codesDirective?.reset();
+    //     },
+    //     err => alert(`There was a problem adding your ${codeType} code.`,
+    //     //  'Close', { duration: 8000 }
+    //      )
+    //   );
+  }
+
+  addCoupon() {
+    // this.updateOrder({ id: this.cart.orderId, couponCode: this.couponCode.value }, [UpdateOrderParams.couponCode], 'coupon');
+  }
+
+  resetCoupon() {
+    // this.updateOrder({ id: this.cart.orderId, giftCardCode: this.giftCardCode.value }, [UpdateOrderParams.giftCardCode], 'gift card');
   }
 
 
