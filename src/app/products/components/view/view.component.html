@@ -1,29 +1,39 @@
-<section>
+<div class="d-flex justify-content-between">
+  <h3>List Of Products</h3>
+  <a routerLink="add" class="btn btn-success">Create New Product</a>
+</div>
 
-  <div class="d-flex justify-content-between">
-    <h4>List Products</h4>
-    <a routerLink="add" class="btn btn-success">Create New Product</a>
-  </div>
+<br>
 
-  <br>
-  
-  <table class="table ">
+<div class="card">
+<table class="table table-bordered">
+  <thead>
     <tr>
-      <th>Id</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th width="220px">Action</th>
+      <th scope="col">Sr.No</th>
+      <th scope="col">Modle No</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Image</th>
+      <th scope="col">Price</th>
+      <th scope="col">Action</th>
     </tr>
-    <tr *ngFor="let product of productsList">
-      <td>{{ product.id }}</td>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products;index as i">
+      <th scope="row">{{i+1}}</th>
+      <td>{{ product. modle_product_id }}</td>
       <td>{{ product.product_name }}</td>
+      <td>{{ product.description }}</td>
+      <td><img class="table-product-img images" src={{product.image}} /></td>
       <td>{{ product.price }}</td>
       <td>
-        <a href="#" [routerLink]="['/product/', 'edit', product.id  ]" class="btn btn-primary">Edit</a>
-        <button type="button" (click)="deleteProducts(product.id)" class="btn btn-danger">Delete</button>
+      
+        <a  class="action-icon edit btn-success" (click)="edit()"><mat-icon class="icon">edit</mat-icon></a>
+        <a  class="action-icon delete" (click)="delete()"><mat-icon>delete_outline</mat-icon></a>
 
       </td>
     </tr>
-  </table>
-</section>
+  
+  </tbody>
+</table>
+</div>

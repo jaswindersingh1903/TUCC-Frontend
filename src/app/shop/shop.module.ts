@@ -22,13 +22,21 @@ import { CheckoutService } from './services/checkout.service';
 import { CartService } from './services/cart.service';
 //local components
 import { CheckoutComponent } from './checkout/checkout.component';
-
+import {CartQuantityComponent} from './cart-quantity/cart-quantity.component'
+import { RouterModule } from '@angular/router';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { SidebarComponent } from '../core/components/sidebar/sidebar.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 @NgModule({
   declarations: 
   [
     CartComponent,
     FeaturedComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    CartQuantityComponent,
+   
   ],
   imports: [
     CommonModule,
@@ -40,8 +48,31 @@ import { CheckoutComponent } from './checkout/checkout.component';
     ToastModule,
     BadgeModule,
     FormsModule,
+    MatFormFieldModule,
     ReactiveFormsModule,
-    DialogModule
+    DialogModule,
+    MatIconModule, 
+    MatButtonModule, 
+   
+    MatTooltipModule,
+     RouterModule
+  ],
+  exports:[
+    CardModule,
+    ButtonModule,
+    SplitButtonModule,
+    ConfirmDialogModule,
+    ToastModule,
+    BadgeModule,
+    FormsModule,
+   
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    DialogModule,
+    MatIconModule, 
+    MatButtonModule, 
+    MatTooltipModule,
+     RouterModule
   ],
   providers: 
   [

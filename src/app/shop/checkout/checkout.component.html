@@ -7,30 +7,62 @@
                 the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
                 scrambled it to make a type specimen book.</p>
         </div> -->
+        <div class="card">
+            <div class="row">
+                <div class="col-md-3 order-md-2 mb-4">
 
-        <div class="row">
-            <div class="col-md-3 order-md-2 mb-4">
-                <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-muted">Checkout</span>
-                    <span class="badge badge-secondary badge-pill">3</span>
-                </h4>
-                <ul class="list-group mb-3">
-                    <li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let product of products; let i = index">
-                        <div>
-                            <h6 class="my-0">{{product.product_name}}</h6>
-                            <small class="text-muted">{{product.price | currency:'CAD'}}</small>
-                            <small class="text-muted">{{product.price | currency:'CAD'}}</small>
-                        </div>
-                        <!-- <span class="text-muted">{{product.price}}</span> -->
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Total (CAD)</span>
-                        <!-- <strong>{{this.grandTotal | currency:'CAD'}}</strong> -->
-                        <strong>{{this.grandTotal}}</strong>
-                    </li>
-                </ul>
+                    <ul class="list-group mb-3">
+                        <h4 class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-muted">Checkout</h4>
+                            <span class="badge badge-secondary badge-pill">3</span>
+                        </h4>
+                        <li class="list-group-item d-flex justify-content-between lh-condensed checkoutCard"
+                            *ngFor="let product of products; let i = index">
+                            <div>
+                                <h6 class="my-0">{{product.product_name}}</h6>
+                                <small class="text-muted">{{product.total | currency:'CAD'}}</small>
+                                <small class="text-muted">{{product.total | currency:'CAD'}}</small>
+                            </div>
+                            <!-- <span class="text-muted">{{product.price}}</span> -->
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Total (CAD)</span>
+                            <!-- <strong>{{this.grandTotal | currency:'CAD'}}</strong> -->
+                            <strong>{{this.grandTotal}}</strong>
+                        </li>
 
-            <!--  <form class="card p-2">
+                    </ul>
+                    <ul class="list-group mb-3">
+                        <h4 class="d-flex justify-content-between align-items-center mb-3">
+                            <h4>Apply Coupon</h4>
+                        </h4>
+                        <li class="list-group-item d-flex justify-content-between lh-condensed checkoutCard">
+                            <div class="input-row">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Coupon Code</mat-label>
+                                    <input type="text" class="form-control" name="coupon" id="coupon"
+                                        placeholder="Add Coupon Code" value="" required formControlName="coupon">
+                                </mat-form-field>
+                                <button class="apply" mat-flat-button color="accent" [disabled]="couponCode.invalid"
+                                    (click)="addCoupon()">Apply</button>
+
+                            </div>
+
+                        </li>
+
+                        <li class="list-group-item d-flex justify-content-between">
+                            <button class="reset" mat-flat-button color="danger" [disabled]="couponCode.invalid"
+                                (click)="resetCoupon()">Reset Coupon</button>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <button mat-flat-button [disabled]="couponCode.invalid" (click)="resetCoupon()">SubTotal:
+                                {{this.grandTotal}}</button>
+
+                        </li>
+
+                    </ul>
+
+                    <!-- <form class="card p-2">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Promo code">
                         <div class="input-group-append">
@@ -38,71 +70,79 @@
                         </div>
                     </div>
                 </form> -->
-            </div>
-            <div class="col-md-8 order-md-1">
-                <h4 class="mb-3">Billing Details</h4>
-                <form class="needs-validation" [formGroup]="CheckoutFormData" (ngSubmit)="buyNow()">
-                    <div class="row">
-                        <div class="col-md-3 mb-3">
-                            <label for="firstName">First name</label>
-                            <input type="text" class="form-control" name="firstName" id="firstName" placeholder="" value="" required  formControlName="firstName">
-                            <div class="invalid-feedback">
-                                Valid first name is required.
+                </div>
+                <div class="col-md-8 order-md-1">
+                    <h4 class="mb-3">Billing Details</h4>
+                    <form class="needs-validation" [formGroup]="CheckoutFormData" (ngSubmit)="buyNow()">
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <label for="firstName">First name</label>
+                                <input type="text" class="form-control" name="firstName" id="firstName"
+                                    placeholder="Jhon" value="" required formControlName="firstName">
+                                <div class="invalid-feedback">
+                                    Valid first name is required.
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="lastName">Last name</label>
+                                <input type="text" class="form-control" name="lastName" formControlName="lastName"
+                                    id="lastName" placeholder="Denma" value="" required>
+                                <div class="invalid-feedback">
+                                    Valid last name is required.
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="email">Email <span class="text-muted"></span></label>
+                                <input type="email" class="form-control" formControlName="email"
+                                    placeholder="jhon@example.com">
+
+                                <div class="invalid-feedback">
+                                    Please enter a valid email address for shipping updates.
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="email">Phone Number <span class="text-muted"></span></label>
+                                <input type="email" class="form-control" formControlName="phone"
+                                    placeholder="123-4567-890">
+                                <div class="invalid-feedback">
+                                    Please enter a valid email address for shipping updates.
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="lastName">Last name</label>
-                            <input type="text" class="form-control" name="lastName" formControlName="lastName" id="lastName" placeholder="" value="" required >
-                            <div class="invalid-feedback">
-                                Valid last name is required.
+
+                        <div class="row" formGroupName="address">
+                            <div class="col-md-3 mb-3">
+                                <label for="address">City</label>
+                                <input type="text" class="form-control" name="city" formControlName="city" id="city"
+                                    placeholder="1234 Main St" required>
+                                <div class="invalid-feedback">
+                                    Please enter your shipping address.
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="address2">Street</label>
+                                <input type="text" class="form-control" name="street" formControlName="street"
+                                    id="street" placeholder="street">
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="zip">Country</label>
+                                <input type="text" class="form-control" name="country" formControlName="country"
+                                    id="country" placeholder="" required>
+                                <div class="invalid-feedback">
+                                    Country is required.
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <label for="zip">Zip</label>
+                                <input type="text" class="form-control" name="zip" formControlName="zip" id="zip"
+                                    placeholder="" required>
+                                <div class="invalid-feedback">
+                                    Zip code required.
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="email">Email <span class="text-muted"></span></label>
-                            <input type="email" class="form-control"  formControlName="email" placeholder="you@example.com">
-                            
-                            <div class="invalid-feedback">
-                                Please enter a valid email address for shipping updates.
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="email">Phone Number <span class="text-muted"></span></label>
-                            <input type="email" class="form-control"  formControlName="phone" placeholder="123-4567-890">
-                            <div class="invalid-feedback">
-                                Please enter a valid email address for shipping updates.
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="row"  formGroupName="address">
-                        <div class="col-md-3 mb-3">
-                            <label for="address">City</label>
-                            <input type="text" class="form-control" name="city"  formControlName="city" id="city" placeholder="1234 Main St" required>
-                            <div class="invalid-feedback">
-                                Please enter your shipping address.
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="address2">Street</label>
-                            <input type="text" class="form-control" name="street" formControlName="street" id="street" placeholder="street">
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="zip">Country</label>
-                            <input type="text" class="form-control" name="country" formControlName="country" id="country" placeholder="" required>
-                            <div class="invalid-feedback">
-                                Country is required.
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-2">
-                            <label for="zip">Zip</label>
-                            <input type="text" class="form-control" name="zip" formControlName="zip" id="zip" placeholder="" required>
-                            <div class="invalid-feedback">
-                                Zip code required.
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- <div class="row">
+
+                        <!-- <div class="row">
                         <div class="col-md-5 mb-3">
                             <label for="country">Country</label>
                             <select class="custom-select d-block w-100" id="country" required>
@@ -125,7 +165,7 @@
                         </div>
                     
                     </div> -->
-                    <!--  <hr class="mb-4">
+                        <!--  <hr class="mb-4">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="same-address">
                         <label class="custom-control-label" for="same-address">Shipping address is the same as my billing
@@ -136,7 +176,7 @@
                         <label class="custom-control-label" for="save-info">Save this information for next time</label>
                     </div>
                     -->
-                    <!-- 
+                        <!-- 
                     <hr class="mb-4">
                         
                         <h4 class="mb-3">Payment</h4>
@@ -189,13 +229,15 @@
                             </div>
                         </div>
                     </div> -->
-                    <hr class="mb-4">
-                    <button class="btn btn-primary btn-lg btn-block" type="submit" >Pay Now</button>
-                </form>
+                        <hr class="mb-4">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit"
+                            [disabled]="!CheckoutFormData.valid">Pay Now</button>
+                    </form>
+                </div>
             </div>
         </div>
 
-    <!--  <footer class="my-5 pt-5 text-muted text-center text-small">
+        <!--  <footer class="my-5 pt-5 text-muted text-center text-small">
             <p class="mb-1">&copy; 2020-2021 therichpost.com</p>
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="#">Privacy</a></li>
@@ -211,7 +253,8 @@
             <h5 class="card-title">Checkout</h5>
         </div>
         <div class="center">
-            <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" alt="">
+            <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
+                alt="">
             <h4>Your cart is empty!</h4>
             <h6>Add item to it now</h6>
             <button routerLink="/shop" class="btn btn-primary">Shop Now</button>
@@ -221,4 +264,4 @@
 
 
 <p-confirmDialog header="Pay Now" icon="pi pi-money-bill"></p-confirmDialog>
-    <p-toast position="top-right"></p-toast>
+<p-toast position="top-right"></p-toast>

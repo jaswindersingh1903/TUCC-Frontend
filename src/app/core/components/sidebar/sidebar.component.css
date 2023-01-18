@@ -27,7 +27,12 @@
     /* background: rgba(125, 145, 74, 0.19);  */
 
   }
-
+  .badge-notify{
+    background:red;
+    position:relative;
+    top: -18px;
+    left: -5px;
+}
   .sidebar-item{
     width: 100%;
    display: table;

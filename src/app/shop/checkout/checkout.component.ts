@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormControl,Validators} from '@angular/forms';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import {FormGroup, FormControl,Validators, FormControlDirective} from '@angular/forms';
 
 //services
 import { CheckoutService } from '../services/checkout.service';
@@ -16,7 +16,12 @@ import { environment } from "../../../environments/environment";
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
+  // @Input() disabled?: boolean = false;
+ disableBtn: boolean=false;
+ couponCode = new FormControl('');
+  giftCardCode = new FormControl('');
 
+  @ViewChild(FormControlDirective) codesDirective: FormControlDirective | undefined
   constructor(
     private cartService : CartService,
     private confirmationService: ConfirmationService,
@@ -29,7 +34,7 @@ export class CheckoutComponent implements OnInit {
   success: boolean = false
   failure:boolean = false
 
-  CheckoutFormData;
+  CheckoutFormData: FormGroup;
   email:string ='';
   lastName:string ='';
   firstName:string ='';
@@ -39,21 +44,23 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void 
   {
+    this.getTotalAmount()
     this.initForm();
     this.cartService.getProducts()
-    .subscribe(
-      res=>
-      {
-        this.products = res;
-        this.grandTotal = this.cartService.getTotalPrice();
+    // .subscribe(
+    //   res=>
+    //   {
+    //     this.products = res;
+    //     this.grandTotal = this.cartService.getTotalPrice();
 
-        console.log('grandTotal',this.grandTotal)
-        console.log('this.product',this.products)
+    //     console.log('grandTotal',this.grandTotal)
+    //     console.log('this.product',this.products)
 
-      }
-    )
+    //   }
+    // )
     this.invokeStripe();
   }
+  
   //init form
   initForm(){
     this.CheckoutFormData = new FormGroup(
@@ -170,6 +177,46 @@ export class CheckoutComponent implements OnInit {
     };
 
    
+  }
+
+  getTotalAmount() { //load cart  done by vaishali
+    if (localStorage.getItem('localCart')) {
+      this.products = JSON.parse(localStorage.getItem('localCart'));
+      this.grandTotal = this.products.reduce
+        (function (acc, val) {
+          return acc + (val.price * val.quantity);
+        }, 0);
+    }
+  }
+
+
+  //coupon code
+
+  private updateOrder(
+    // order: Order, params: UpdateOrderParams[], codeType: string
+    ) {
+    // this.order.updateOrder(order, params)
+    //   .subscribe(
+    //     () => {
+    //       alert(`Successfully added ${codeType} code.`, 'Close',
+    //       //  { duration: 8000 }
+    //        );
+    //       this.couponCode.reset();
+    //       this.giftCardCode.reset();
+    //       this.codesDirective?.reset();
+    //     },
+    //     err => alert(`There was a problem adding your ${codeType} code.`,
+    //     //  'Close', { duration: 8000 }
+    //      )
+    //   );
+  }
+
+  addCoupon() {
+    // this.updateOrder({ id: this.cart.orderId, couponCode: this.couponCode.value }, [UpdateOrderParams.couponCode], 'coupon');
+  }
+
+  resetCoupon() {
+    // this.updateOrder({ id: this.cart.orderId, giftCardCode: this.giftCardCode.value }, [UpdateOrderParams.giftCardCode], 'gift card');
   }
 
 

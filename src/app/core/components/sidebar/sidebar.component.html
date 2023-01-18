@@ -14,7 +14,18 @@
           <img src="assets/images/cmwr-logo-450.jpg" height="40" class="mr-2">
       </div>
       <div>
-        <i [routerLink]="'shop/cart'" label="Cart"  class="pi pi-shopping-cart" style="font-size: 1.5em"></i>
+        <!-- <p-button [routerLink]="'shop/cart'"  label="Cart"  icon="pi pi-shopping-cart" styleClass="mr-2" >{{totalCartItems}}</p-button> -->
+
+        <!-- <i [routerLink]="'shop/cart'" label="Cart" aria-hidden="true"   class="pi pi-shopping-cart" style="font-size: 1.5em">
+          <span *ngIf="number" class="pi pi-shopping-cart" >{{number.text}}
+          </span>
+        </i> -->
+        <a [routerLink]="'shop/cart/'">
+          <span class="pi pi-shopping-cart" aria-hidden="true">
+            <span   class="badge badge-notify" aria-hidden="true" >{{totalCartItems}}
+            </span>
+          </span>
+        </a>
       </div>
     </div>
   </header>
