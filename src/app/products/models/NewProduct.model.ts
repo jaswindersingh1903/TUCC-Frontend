@@ -1,35 +1,35 @@
 export interface Product {
-    Product Name?:any;
-    Product Sub-Title?: number;
-    Product Code?: string;
-    Date Edited?: string;
-    Active Item?: any;
-    Out of Stock?: any;
+    ProductName?:any;
+    ProductSubTitle?: number;
+    ProductCode?: string;
+    DateEdited?: string;
+    ActiveItem?: any;
+    OutofStock?: any;
 
-    Show in Catalog / Product Listings
-    Featured
-    Description
-    Description2
-    Short Description
-    Keywords
+    //Show in Catalog / Product Listings
+    Featured?: string;
+    Description?: string;
+    Description2?: string;
+    ShortDescription?: string;
+    Keywords?: string;
 
-    Meta Title
-    Meta Description
-    Allow Invoice:
-    Thumbnail URL
-    Heading Image URL:
-    Large Image URL:	
+    MetaTitle?: string;
+    MetaDescription?: string;
+    AllowInvoice?: string;
+    ThumbnailURL?: string;
+    HeadingImageURL?: string;
+    LargeImageURL?: string;	
 
 
-    Inventory
-    Visibility Start Date/Time
-    Visibility End Date/Time:	
-    Purchasable Start Date/Time:	
-    Purchasable End Date/Time
-    Prices:
+    Inventory?: string;
+    VisibilityStart?: string;
+    VisibilityEnd?: string;	
+    PurchasableStart?: string;	
+    PurchasableEnd?: string;
+    Prices?: string;
     
-    Product Finance Code:
-    Product Owner Emails
-    Related Products:
-    Categories
+    ProductFinance?: string;
+    ProductOwnerEmails?: string;
+    RelatedProducts?: string;
+    Categories?: string;
   }
